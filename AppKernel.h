@@ -38,6 +38,10 @@ auto splitFileTest(const string &path, vector<vector<double>> & vectorTestowy) {
 
         auto vectorWarosci = vector<vector<double >>();
         splitFileTest(stringi[0],vectorWarosci);
+        for(auto vec:vectorWarosci){
+            printVector(vec);
+            cout<<"\n";
+        }
         auto vectorCentrow = vector<vector<double >>();
         for(auto i=0;i<stoi(stringi[1]);i++){
             vectorCentrow.push_back(vectorWarosci[i]); }

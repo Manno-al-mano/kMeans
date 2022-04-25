@@ -36,33 +36,41 @@ auto group(const vector<vector<double>>&wartosci,const vector<vector<double>>&ce
     return vec;
 }
 
-auto alterCenters(vector<vector<double>>&centra,const vector<pair<vector<double>,int>> &vec)
-{
-    auto avg=vector<double>();
-    for (auto val:centra[0]){
+auto alterCenters(vector<vector<double>>&centra,const vector<pair<vector<double>,int>> &vec) {
+    auto avg = vector<double>();
+    for (auto val:centra[0]) {
         avg.push_back(0);
     }
-    int count=0;
-  for(int i=0;i<centra.size();i++){
-     for(auto per:vec){
-         if(per.second==i){
-             count++;
-           for(auto j=0;j<per.first.size();j++){
-               avg[j]+=per.first[j];
+    int count = 0;
+    for (int i = 0; i < centra.size(); i++) {
+        for (auto per:vec) {
+            if (per.second == i) {
+                count++;
+                for (auto j = 0; j < per.first.size(); j++) {
+                    avg[j] += per.first[j];
 
-           }
-         }
-     }
-cout<<"center "<<i<<"\n";
-     for(auto j=0;j<avg.size();j++) {
-         cout<<avg[j]/count<<" ";
-         if (avg[j] != 0) {
+                }
+            }
+        }
+        cout << "center " << i << "\n";
+        for (auto j = 0; j < avg.size(); j++) {
+            cout << avg[j] / count << " ";
+            if (avg[j] != 0) {
 
-             centra[i][j] = avg[j] / count;
-             avg[j] = 0;
-         }
-     }
-     cout<<"\n";
+                centra[i][j] = avg[j] / count;
+                avg[j] = 0;
+            }
+        }
+        cout << "\n";
+        auto sum = 0;
+        for (auto per:vec) {
+        if (i == per.second)
+            sum += countDist(centra[i], per.first);
+    }
+cout<<"Suma Kwadratow: "<<sum<<"\n";
+
+
+
      count =0;
 
   }
